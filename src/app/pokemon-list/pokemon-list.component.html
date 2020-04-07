@@ -1,1 +1,8 @@
-<p>pokemon-list works!</p>
+<div *ngFor="let card of cards.cards; let i = index">
+    <h1>{{card.name}}</h1>
+    <h3>{{card.id}}</h3>
+    <img [src]="card.imageUrl" alt="Card Pokemon">
+    <div *ngFor="let type of cards.cards[i].types">
+        <h2>{{type}}</h2>
+    </div>
+</div>
