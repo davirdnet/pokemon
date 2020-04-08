@@ -16,6 +16,6 @@ export class PokemonListService {
   constructor(private http: HttpClient) { }
 
   getAllCards(): Observable<any[]> {
-    return this.http.get<any[]>('https://api.pokemontcg.io/v1/cards?page=1&pageSize=10');
+    return this.http.get<any[]>('https://api.pokemontcg.io/v1/cards?page=1&pageSize=40');
   }
 }

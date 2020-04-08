@@ -1,1 +1,47 @@
-<p>pokemon-detail works!</p>
+<div class="header">
+    <div class="back-list" (click)="goBackList()">voltar</div>
+</div>
+<div class="pokemon">
+    <div class="detail-img">
+        <img [src]="pokemon.card.imageUrlHiRes">
+    </div>
+    <div class="detail-txt">
+        <h1>Ficha Técnica</h1>
+        <div class="detail-title __border">Nome:</div>
+        <div class="detail-content">{{pokemon.card.name}}</div>
+        <div class="detail-title __border">ID:</div>
+        <div class="detail-content"> {{pokemon.card.id}}</div>
+        <div class="detail-title __border">Tipo: </div>
+        <div class="detail-content">{{pokemon.card.types[0]}}</div>
+        <div>
+            <div class="detail-title __border">Ataques:</div>
+            <div class="detail-combo" *ngFor="let ataque of pokemon.card.attacks">
+                <div class="detail-title">Nome do ataque: </div>
+                <div class="detail-content">{{ataque.name}}</div>
+                <div class="detail-title">Dano:</div>
+                <div class="detail-content"> {{ataque.damage}}</div>
+                <div class="detail-title">Descrição: </div>
+                <div class="detail-content">{{ataque.text}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="detail-title __border">Resistências:</div>
+            <div class="detail-combo" *ngFor="let resistencia of pokemon.card.resistances">
+                <div class="detail-title">Tipo: </div>
+                <div class="detail-content">{{resistencia.type}}</div>
+                <div class="detail-title">Valor:</div>
+                <div class="detail-content"> {{resistencia.value}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="detail-title __border">Fraquezas:</div>
+            <div class="detail-combo" *ngFor="let fraqueza of pokemon.card.weaknesses">
+                <div class="detail-title">Tipo:</div>
+                <div class="detail-content"> {{fraqueza.type}}</div>
+                <div class="detail-title">Valor:</div>
+                <div class="detail-content"> {{fraqueza.value}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-http-loader></ng-http-loader>

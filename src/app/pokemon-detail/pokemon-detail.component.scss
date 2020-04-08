@@ -1,0 +1,84 @@
+@import '../../assets/styles/_variables.scss';
+//
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: #f89e17;
+    justify-content: center;
+    .back-list {
+        color: white;
+        font-weight: normal;
+        line-height: 50px;
+        cursor: pointer;
+    }
+}
+
+.pokemon {
+    @media (max-width: $mobile) {
+        flex-direction: column;
+    }
+    @media (max-width: $tablet) {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    @media (max-width: $desktop) {
+        flex-direction: row;
+    }
+    @media (min-width: $desktop) {
+        flex-direction: row;
+    }
+    display: flex;
+    flex-direction: row;
+    .detail-img {
+        img {
+            max-width: 600px;
+            max-height: 800px;
+            @media (max-width: $desktop) {
+                padding-left: 20px;
+                max-width: 450px;
+                max-height: 650px;
+            }
+            @media (max-width: $tablet) {
+                padding-left: 0;
+                max-width: 97vw;
+                max-height: 100vh;
+            }
+        }
+    }
+    .detail-txt {
+        @media (max-width: $tablet) {
+            margin-top: 20px;
+            margin-left: 5px;
+        }
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            text-align: left;
+            color: $title-color;
+        }
+        .detail-title {
+            font-size: 12px;
+            padding-top: 10px;
+            &.__border {
+                border-bottom: 0.5px solid lightgrey;
+            }
+        }
+        .detail-content {
+            padding-top: 5px;
+            padding-left: 20px;
+            font-style: italic;
+        }
+        .detail-combo {
+            margin-left: 20px;
+            padding-bottom: 20px;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PokemonListService } from './pokemon-list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,8 +10,13 @@ import { PokemonListService } from './pokemon-list.service';
 export class PokemonListComponent implements OnInit {
 
   cards: any;
+  buscaPokemon;
+  @Output() detail = new EventEmitter();
 
-  constructor(private pokemonListService: PokemonListService) { }
+  constructor(
+                private pokemonListService: PokemonListService,
+                private router: Router
+              ) { }
 
   ngOnInit(): void {
     this.getAllCards();
@@ -20,8 +26,12 @@ export class PokemonListComponent implements OnInit {
     this.cards = [];
     this.pokemonListService.getAllCards().subscribe((cards: {}) => {
       this.cards = cards;
-      console.log(this.cards.cards);
     });
+  }
+
+  goDetails(id) {
+    this.detail.emit(id);
+    this.router.navigate([`/detail/${id}`]);
   }
 
 }

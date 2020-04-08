@@ -1,8 +1,13 @@
-<div *ngFor="let card of cards.cards; let i = index">
-    <h1>{{card.name}}</h1>
-    <h3>{{card.id}}</h3>
-    <img [src]="card.imageUrl" alt="Card Pokemon">
-    <div *ngFor="let type of cards.cards[i].types">
-        <h2>{{type}}</h2>
+<div class="header">
+    <input class="input-search" type="text" name="search" [(ngModel)]="buscaPokemon" autocomplete="off" placeholder="busque seu pokemon por nome">
+</div>
+<div class="base">
+    <div class="card-list" *ngFor="let card of cards.cards | filter:buscaPokemon; let i = index ">
+        <h1>{{card.name}}</h1>
+        <h3>{{card.id}}</h3>
+        <img [src]="card.imageUrl" [alt]="card.name">
+        <h2>{{!cards.cards[i].types ? cards.cards[i].supertype : cards.cards[i].types}}</h2>
+        <button class="card-button" (click)="goDetails(card.id)">Detalhes</button>
     </div>
 </div>
+<ng-http-loader></ng-http-loader>
